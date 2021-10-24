@@ -5,6 +5,22 @@ const getAllDatabaseTables = async (req, res) => {
   res.json(tables.map(t => t.Tables_in_node))
 }
 
+const getDatabaseTableDetails = async (req, res) => {
+  const {tableName} = req.params
+  const details = await sequelize.getQueryInterface().describeTable(tableName)
+  res.json(details)
+}
+
+const addDatabaseTableColumn = async (req, res) => {
+  const {tableName} = req.params
+  const {name, type, after} = req.body
+  const column = await sequelize.getQueryInterface().addColumn(tableName, name, {type, after})
+  res.json(column)
+}
+
+
 module.exports = {
-  getAllDatabaseTables
+  getAllDatabaseTables,
+  getDatabaseTableDetails,
+  addDatabaseTableColumn,
 }
