@@ -18,9 +18,16 @@ const addDatabaseTableColumn = async (req, res) => {
   res.json(column)
 }
 
+const removeDatabaseTableColumn = async (req) => {
+  const {tableName} = req.params
+  const {name} = req.body
+  console.log(tableName, name)
+  await sequelize.getQueryInterface().removeColumn(tableName, name)
+}
 
 module.exports = {
   getAllDatabaseTables,
   getDatabaseTableDetails,
   addDatabaseTableColumn,
+  removeDatabaseTableColumn,
 }

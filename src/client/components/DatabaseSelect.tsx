@@ -16,14 +16,14 @@ function DatabaseSelect() {
     getDbs()
   }, [])
 
-  const selectDatabase = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectDatabase = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setDbName(e.target.value)
   }
 
   return (
     <div className="App">
     <select onChange={selectDatabase}>
-      <option> --- </option>
+      <option value={''}> --- </option>
       {databases.filter(db => db !== 'sequelizemeta').map((db, i) => (
         <option value={db} key={i}>{db}</option>
       ))}

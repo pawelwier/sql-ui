@@ -11,3 +11,7 @@ export async function getDatabaseDetails(tableName: string): Promise<Record<stri
 export async function addDatabaseColumn(tableName: string, name: string, type: string, after?: string): Promise<void> {
   return await makeApiRequest('post', getApiUrl(`dbs/${tableName}/add-column`), {name, type, after})
 }
+
+export async function removeDatabaseColumn(tableName: string, name: string): Promise<void> {
+  return await makeApiRequest('delete', getApiUrl(`dbs/${tableName}/remove-column`), {name})
+}

@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useStore} from "../store/database"
-import {getDatabaseDetails} from "../controllers/DatabaseController";
-import AddColumnForm from "./AddColumnForm";
+import {
+  getDatabaseDetails,
+  removeDatabaseColumn
+} from "../controllers/DatabaseController"
+import AddColumnForm from "./AddColumnForm"
 require('dotenv').config()
 
 function DatabaseDetails() {
@@ -17,12 +20,17 @@ function DatabaseDetails() {
     getDbDetails()
   }, [dbName])
 
+  const deleteColumn = async (columnName: string): Promise<void> => {
+    await removeDatabaseColumn(dbName, columnName)
+  }
+
   return (
     <>
       <div>
         {dbColumns && Object.keys(dbColumns).map((columnName, i) => (
           <div key={i}>
-            {`${columnName}: ${dbColumns[columnName].type}`}
+            <span>{`${columnName}: ${dbColumns[columnName].type}`}</span>
+            <button onClick={() => deleteColumn(columnName)}>x</button>
           </div>
         ))}
       </div>
