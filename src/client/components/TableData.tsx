@@ -6,7 +6,7 @@ function TableData({tableName}: {tableName: string}) {
   const [fields, setFields] = useState<Record<string, any>[]>([])
 
   useEffect(() => {
-    const getRecords = async () => {
+    const getRecords = async (): Promise<void> => {
       const response = await getAllRecords(tableName)
       setRecords(response.data)
       setFields(response.fields)

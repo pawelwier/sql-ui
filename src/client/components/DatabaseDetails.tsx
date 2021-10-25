@@ -5,10 +5,12 @@ import {
   removeDatabaseColumn
 } from "../controllers/DatabaseController"
 import AddColumnForm from "./AddColumnForm"
+import {DatabaseFieldDetails} from "../types/DatabaseFieldDetails";
+
 require('dotenv').config()
 
 function DatabaseDetails() {
-  const [dbColumns, setDbColumns] = useState<Record<string, {type: string}>>({})
+  const [dbColumns, setDbColumns] = useState<Record<string, DatabaseFieldDetails>>({})
   const [showAddColumnForm, setShowAddColumnForm] = useState<boolean>(false)
   const dbName = useStore(state => state.activeDatabase)
 

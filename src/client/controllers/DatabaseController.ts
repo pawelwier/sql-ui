@@ -1,10 +1,11 @@
 import {makeApiRequest, getApiUrl} from '../utils/ApiRequests'
+import {DatabaseFieldDetails} from "../types/DatabaseFieldDetails";
 
 export async function getAllDatabases(): Promise<string[]> {
   return await makeApiRequest('get', getApiUrl('dbs'))
 }
 
-export async function getDatabaseDetails(tableName: string): Promise<Record<string, {type: string}>> {
+export async function getDatabaseDetails(tableName: string): Promise<Record<string, DatabaseFieldDetails>> {
   return await makeApiRequest('get', getApiUrl(`dbs/${tableName}/details`))
 }
 

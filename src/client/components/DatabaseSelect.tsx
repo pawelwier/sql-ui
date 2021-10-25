@@ -6,7 +6,7 @@ require('dotenv').config()
 function DatabaseSelect() {
   const [databases, setDatabases] = useState<string[]>([]);
 
-  const setDbName = useStore(state => state.setActiveDatabase)
+  const setDbName = useStore<(activeDatabase: string) => void>(state => state.setActiveDatabase)
 
   useEffect(() => {
     const getDbs = async () => {

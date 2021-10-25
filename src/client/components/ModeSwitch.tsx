@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function ModeSwitch({setMode}: {setMode: React.Dispatch<React.SetStateAction<any>>}) {
 
-  const modes = [
+  const modes: string[] = [
     'data',
     'edit',
   ]
