@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "commonjs",
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,13 +18,14 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mysql2": "^2.3.2",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.17.5",
     "react-scripts": "^4.0.3",
     "sequelize": "^6.7.0",
+    "styled-components": "^5.3.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1",
     "zustand": "^3.6.0"
@@ -31,9 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:client": "react-scripts start",
-    "start:api": "cd src/api && nodemon server.js",
-    "db:up": "sequelize db:migrate",
-    "db:down": "sequelize db:migrate:undo"
+    "start:api": "cd src/api && nodemon server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.15",
     "sequelize-cli": "^6.2.0"
   }
 }

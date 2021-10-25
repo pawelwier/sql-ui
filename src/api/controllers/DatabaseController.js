@@ -1,4 +1,4 @@
-const sequelize = require('../setup/dbSetup')
+const {sequelize} = require('../setup/dbSetup')
 
 const getAllDatabaseTables = async (req, res) => {
   const tables = await sequelize.getQueryInterface().showAllSchemas()

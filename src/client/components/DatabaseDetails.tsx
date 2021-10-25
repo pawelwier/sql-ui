@@ -9,6 +9,7 @@ require('dotenv').config()
 
 function DatabaseDetails() {
   const [dbColumns, setDbColumns] = useState<Record<string, {type: string}>>({})
+  const [showAddColumnForm, setShowAddColumnForm] = useState<boolean>(false)
   const dbName = useStore(state => state.activeDatabase)
 
   useEffect(() => {
@@ -24,6 +25,10 @@ function DatabaseDetails() {
     await removeDatabaseColumn(dbName, columnName)
   }
 
+  const toggleShowAddColumnForm = (): void => {
+    setShowAddColumnForm(!showAddColumnForm)
+  }
+
   return (
     <>
       <div>
@@ -34,8 +39,10 @@ function DatabaseDetails() {
           </div>
         ))}
       </div>
-      <button>Add column</button>
-      <AddColumnForm />
+      <button onClick={toggleShowAddColumnForm}>
+        {showAddColumnForm ? 'Hide' : 'Add column'}
+      </button>
+      {showAddColumnForm && <AddColumnForm/>}
     </>
   )
 }
