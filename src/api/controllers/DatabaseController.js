@@ -8,7 +8,6 @@ const getAllDatabaseTables = async (req, res) => {
 const getDatabaseTableDetails = async (req, res) => {
   const {tableName} = req.params
   const details = await sequelize.getQueryInterface().describeTable(tableName)
-  console.log(details)
   res.json(details)
 }
 

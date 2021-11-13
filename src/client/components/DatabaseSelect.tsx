@@ -22,6 +22,7 @@ function DatabaseSelect() {
 
   return (
     <div className="App">
+      Choose the table:
     <select onChange={selectDatabase}>
       <option value={''}> --- </option>
       {databases.filter(db => db !== 'sequelizemeta').map((db, i) => (
