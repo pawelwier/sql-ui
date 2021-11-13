@@ -11,3 +11,5 @@ export const makeApiRequest: any = async (method: 'get' | 'post' | 'put' | 'dele
 }
 
 export const getApiUrl: (url: string) => string = url => `${process.env.REACT_APP_API_HOST}/${url}`
+
+

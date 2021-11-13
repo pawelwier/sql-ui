@@ -5,3 +5,7 @@ export const getAllRecords = async (tableName: string): Promise<{data: Record<st
   const {data, fields} = response
   return {data, fields}
 }
+
+export const insertNewRecord = async (tableName: string, data: Record<string, string>): Promise<any> => {
+  return await makeApiRequest('post', getApiUrl(`data/${tableName}`), data)
+}

@@ -8,6 +8,7 @@ const getAllDatabaseTables = async (req, res) => {
 const getDatabaseTableDetails = async (req, res) => {
   const {tableName} = req.params
   const details = await sequelize.getQueryInterface().describeTable(tableName)
+  console.log(details)
   res.json(details)
 }
 
@@ -21,7 +22,6 @@ const addDatabaseTableColumn = async (req, res) => {
 const removeDatabaseTableColumn = async (req) => {
   const {tableName} = req.params
   const {name} = req.body
-  console.log(tableName, name)
   await sequelize.getQueryInterface().removeColumn(tableName, name)
 }
 

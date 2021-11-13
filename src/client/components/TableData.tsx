@@ -10,8 +10,9 @@ function TableData({tableName}: {tableName: string}) {
   useEffect(() => {
     const getRecords = async (): Promise<void> => {
       const response = await getAllRecords(tableName)
-      setRecords(response.data)
-      setFields(response.fields)
+      const {data, fields} = response
+      setRecords(data)
+      setFields(fields)
     }
     getRecords()
   }, [tableName])
@@ -39,7 +40,7 @@ function TableData({tableName}: {tableName: string}) {
       <button onClick={() => setShowAddRecordForm(!showAddRecordForm)}>
         {showAddRecordForm ? 'Hide' : 'Add record'}
       </button>
-      {showAddRecordForm && <AddRecordForm fields={fields}/>}
+      {showAddRecordForm && <AddRecordForm fields={fields} tableName={tableName}/>}
     </>
   )
 }

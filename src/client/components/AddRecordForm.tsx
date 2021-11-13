@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import {useForm} from "react-hook-form";
+import {insertNewRecord} from '../controllers/RecordController'
 
-export function AddRecordForm({fields}: {fields: Record<string, any>[]}) {
+export function AddRecordForm({fields, tableName}: {fields: Record<string, any>[], tableName: string}) {
   const [defaultValues, setDefaultValues] = useState<Record<string, any>>({})
   const {register, handleSubmit} = useForm({
     defaultValues
   })
 
-  const addRecord = async (data: any): Promise<void> => {
-    console.log(data)
-    const {} = data
+  const addRecord = async (data: Record<string, any>): Promise<void> => {
+    await insertNewRecord(tableName, data)
   }
 
   useEffect(() => {
