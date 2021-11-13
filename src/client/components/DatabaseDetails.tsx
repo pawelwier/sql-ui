@@ -27,10 +27,6 @@ function DatabaseDetails() {
     await removeDatabaseColumn(dbName, columnName)
   }
 
-  const toggleShowAddColumnForm = (): void => {
-    setShowAddColumnForm(!showAddColumnForm)
-  }
-
   return (
     <>
       <div>
@@ -41,10 +37,10 @@ function DatabaseDetails() {
           </div>
         ))}
       </div>
-      <button onClick={toggleShowAddColumnForm}>
+      <button onClick={() => setShowAddColumnForm(!showAddColumnForm)}>
         {showAddColumnForm ? 'Hide' : 'Add column'}
       </button>
-      {showAddColumnForm && <AddColumnForm/>}
+      {showAddColumnForm && <AddColumnForm {...dbColumns}/>}
     </>
   )
 }

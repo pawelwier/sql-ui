@@ -3,8 +3,9 @@ import {useForm} from "react-hook-form";
 import {useStore} from "../store/database"
 import {addDatabaseColumn} from "../controllers/DatabaseController";
 import {DatabaseColumnCreation} from "../types/DatabaseColumnCreation";
+import {DatabaseFieldDetails} from "../types/DatabaseFieldDetails";
 
-function AddColumnForm() {
+function AddColumnForm(columns:  Record<string, DatabaseFieldDetails>) {
   const {register, handleSubmit} = useForm<DatabaseColumnCreation>({
     defaultValues: {
       name: '',
@@ -24,7 +25,13 @@ function AddColumnForm() {
       <form onSubmit={handleSubmit(addColumn)}>
         <input placeholder="name" {...register("name")} type="text" />
         <input placeholder="type" {...register("type")} type="text" />
-        <input placeholder="after field (optional)" {...register("after")} type="text" />
+        <select placeholder="after field (optional)" {...register("after")}>
+          {Object.keys(columns).map((column, i) => (
+            <option key={i} value={column}>
+              {column}
+            </option>
+          ))}
+        </select>
         <button type="submit">Add</button>
       </form>
     </>
