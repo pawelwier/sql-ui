@@ -1,4 +1,4 @@
-import {makeApiRequest, getApiUrl} from '../utils/ApiRequests'
+import {makeApiRequest, getApiUrl} from '../utils/apiRequests'
 
 export const getAllRecords = async (tableName: string): Promise<{data: Record<string, any>[], fields: Record<string, any>[]}> => {
   const response = await makeApiRequest('get', getApiUrl(`data/${tableName}`))

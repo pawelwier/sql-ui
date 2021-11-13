@@ -3,6 +3,8 @@ import {getAllRecords} from '../controllers/RecordController'
 import {AddRecordForm} from "./AddRecordForm";
 import {getDatabaseDetails} from "../controllers/DatabaseController";
 import {useStore} from '../store/database'
+import {DatabaseColumnData} from "../types/DatabaseColumnData";
+import {formatDate} from "../utils/formUtils";
 
 function TableData({tableName}: {tableName: string}) {
   const [records, setRecords] = useState<Record<string, any>[]>([])
@@ -31,6 +33,10 @@ function TableData({tableName}: {tableName: string}) {
     getColumnDetails()
   }, [tableName])
 
+  const getCellValue = (record: Record<string, any>, column: DatabaseColumnData): String => {
+    return !record[column.name] ? '-' : column.type === 'DATETIME' ? formatDate(new Date(record[column.name])) : record[column.name]
+  }
+
   return (
     <>
       <table>
@@ -45,7 +51,7 @@ function TableData({tableName}: {tableName: string}) {
         {records.map((record, i) => (
           <tr key={i}>{columns.map((column, index) => (
             <td key={index}>
-              {record[column.name] || '-'}
+              {getCellValue(record, column)}
             </td>
           ))}</tr>
         ))}

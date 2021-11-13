@@ -1,4 +1,4 @@
-import {makeApiRequest, getApiUrl} from '../utils/ApiRequests'
+import {makeApiRequest, getApiUrl} from '../utils/apiRequests'
 import {DatabaseFieldDetails} from "../types/DatabaseFieldDetails";
 
 export async function getAllDatabases(): Promise<string[]> {

@@ -4,3 +4,7 @@ export const getInputType = (sqlType: string): string => {
   const isDate = sqlType.toLowerCase().includes('date')
   return isString ? 'text' : isNumber ? 'number' : isDate ? 'date' : ''
 }
+
+export const formatDate = (date: Date): string => {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+}
